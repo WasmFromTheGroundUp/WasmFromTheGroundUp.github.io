@@ -1,1 +1,60 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>📚 WebAssembly From The Ground Up</title>
+    <link rel="stylesheet" href="css/tufte.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+*{box-sizing: border-box}
+body{max-width:100ch;padding-left:0;text-align:center}
+    </style>
+  </head>
+  <body>
+    <article>
+      <section id="subscribed" style="display:none;text-align:center;font-size:2rem">
+          Thanks for subscribing!
+      </section>
+
+      <section id="unsubscribed" style="display:none;text-align:center;font-size:2rem">
+          Bye!
+      </section>
+
+      <h1>WebAssembly</h1>
+      <h2>From The Ground Up</h2>
+
+      <p style="padding-top:1em;font-size:5em;text-align:center">📖</p>
+
+      <section style="text-align:center">
+        <h2>Stay Updated</h2>
+
+        <p style="width:100%">The newsletter will only be used for book announcements</p>
+
+        <form
+            action="https://buttondown.email/api/emails/embed-subscribe/WasmFromTheGroundUp"
+            method="post"
+            target="popupwindow"
+            onsubmit="window.open('https://buttondown.email/WasmFromTheGroundUp', 'popupwindow')"
+            class="embeddable-buttondown-form"
+            style="display:flex;width:100%;font-size:1.5rem;flex-direction:column;"
+            >
+            <input type="email" name="email" id="bd-email" style="padding:0.5rem" placeholder="alice@example.com"/>
+            <input type="submit" value="Subscribe" style="margin-top:1em;padding:0.5rem" />
+        </form>
+      </section>
+
+    </article>
+      <script>
+          document.addEventListener('DOMContentLoaded', function () {
+              if (document.location.search.indexOf('?subscribed=true') !== -1) {
+                  document.getElementById('subscribed').style.display = 'block';
+              }
+
+              if (document.location.search.indexOf('?unsubscribed=true') !== -1) {
+                  document.getElementById('unsubscribed').style.display = 'block';
+              }
+          });
+      </script>
+  </body>
+</html>
+
