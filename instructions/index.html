@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title>WebAssembly Instructions</title>
+    <style>
+#app {
+  margin: 2em 5em;
+}
+.instruction, .tags {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5em;
+  flex-wrap: wrap;
+}
+.tags {
+  margin-bottom: 1em;
+}
+.tag {
+  min-width: 4em;
+  padding: .25em;
+  border-radius: .15em;
+}
+.instruction > *{
+  flex: 1;
+}
+.opcode {
+  font-family: monospace;
+  font-size: 1rem;
+}
+.search {
+  padding: .5em;
+  width: 100%;
+  margin: 1em 0;
+}
+.tag.active {
+  border: 1px solid #65A30D;
+  background-color: #D9F99D;
+}
+.tag.inactive {
+  border: 1px solid #475569;
+  background-color: #E2E8F0;
+}
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <input type="search" class="search" :value="searchText" @input="refilter">
+      <div class="tags">
+        <button :class="{'tag active': active, 'tag inactive': !active}" v-for="(active, tag) in tags" @click="toggleTag(tag, $event.ctrlKey)">{{tag}}</button>
+      </div>
+      <p>{{ visibleInstructions.length }} Instructions</p>
+      <div class="instructions">
+        <div class="instruction" v-for="instr in visibleInstructions">
+          <span>{{instr.name}}</span>
+          <span class="opcode">{{instr.opCodeHex}}</span>
+          <span>{{instr.argsStr}}</span>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
